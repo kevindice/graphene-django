@@ -236,7 +236,7 @@ def convert_onetoone_field_to_djangomodel(field, registry=None):
     def dynamic_type():
         _type = registry.get_type_for_model(model)
         if not _type:
-            return
+            assert _type  # We want to throw an error if we are
 
         return Field(_type, required=not field.null)
 

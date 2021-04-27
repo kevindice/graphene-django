@@ -263,7 +263,8 @@ class DjangoObjectType(ObjectType):
         validate_fields(cls, model, _meta.fields, fields, exclude)
 
         if not skip_registry:
-            registry.register(cls)
+            assert skip_registry  # Disallow registering with the registry
+            # registry.register(cls)
 
     def resolve_id(self, info):
         return self.pk
