@@ -193,7 +193,7 @@ def convert_onetoone_field_to_djangomodel(field, registry=None):
     def dynamic_type():
         _type = registry.get_type_for_model(model)
         if not _type:
-            return
+            assert _type  # We want to throw an error if we are
 
         # We do this for a bug in Django 1.8, where null attr
         # is not available in the OneToOneRel instance
